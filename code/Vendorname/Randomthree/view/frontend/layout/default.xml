@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    <referenceContainer name="sidebar.additional">
+        <container name="product.info.randomthree.container" htmlTag="div" after="wishlist_sidebar">
+            <block
+                class="Vendorname\Randomthree\Block\Index" 
+                name="randomthree_sidebar" as="randomthree" 
+                template="Vendorname_Randomthree::index.phtml" 
+                cacheable="false"
+            	>
+            </block>
+        </container>
+    </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,33 @@
+<div class="block-title encomage-randomthree">
+<strong role="heading" aria-level="2">Custom Sidebar</strong>
+<?php
+/**
+ * Product list template
+ *
+ * @var $block Vendorname\Randomthree\Block\Index
+ */
+
+	$_imagehelper = $this->imageHelper; //$this->helper('Magento\Catalog\Helper\Image');
+
+	$productCollection = $block->getProductCollection(3);
+	/** @var $product \Magento\Catalog\Model\Product */
+	foreach ($productCollection as $product) {
+
+		$_product=$this->productRepository->getById($product['entity_id']);
+	    $productImage = $_imagehelper->init($_product, 'product_base_image')->resize(65)->getUrl();//category_page_list
+		$href=$block->escapeUrl($_product->getProductUrl());
+
+?>
+	<div>
+		<div style="display:inline-block; width:33%;">
+			<a href="<?= $href ?>">
+				<img  src="<?= $productImage ?>" />
+			</a>
+		</div><div style="display:inline-block; width:66%;">
+			<p><a href="<?= $href ?>" style="color:black; text-decoration: none;"  ><strong><?= $product['name'] ?></strong></a></p>
+			<p><strong>$<?= number_format($product['price'],2,'.','') ?></strong></p>
+		</div>
+	</div>
+<?php
+	};
+?></div>
